@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageViewRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/restaurant_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="รูปภาพร้านอาหาร" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="ชื่อร้านอาหาร"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/imageViewRestaurant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="กดเบอร์โทรศัพท์: 02-xxxx-xxxx"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:autoLink="phone"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/textViewPolicyTitleBooking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="นโยบายการจอง:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewPolicyBooking2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="- การชำระเงินมัดจำ 50% จะถูกเรียกเก็บเมื่อทำการจอง"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewPolicyTitleBooking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewPolicyTitleCancellation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="นโยบายการยกเลิกการจอง:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textViewPolicyBooking2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewPolicyCancellation1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="- ยกเลิกก่อน 3 วัน หรือมากกว่า: คืนเงินมัดจำ 50%"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewPolicyTitleCancellation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewPolicyCancellation2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="- ยกเลิกหลัง 3 วัน: ไม่มีการคืนเงินมัดจำ"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewPolicyCancellation1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/buttonViewCourses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="เลือกคอร์สและจอง"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewPolicyCancellation2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/buttonViewReservations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ดูรายการจองของฉัน"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/buttonViewCourses"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

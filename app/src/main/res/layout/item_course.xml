@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageViewCourse"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/course_placeholder" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="รูปภาพคอร์ส" />
+
+        <TextView
+            android:id="@+id/textViewCourseName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="ชื่อคอร์ส"
+            app:layout_constraintTop_toBottomOf="@id/imageViewCourse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textViewCoursePrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ราคา: ฿XXXX"
+            app:layout_constraintTop_toBottomOf="@id/textViewCourseName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/textViewMaxSeats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ที่นั่งสูงสุด: XX"
+            app:layout_constraintTop_toBottomOf="@id/textViewCoursePrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/textViewAvailableTimes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="รอบเวลา: ..."
+            app:layout_constraintTop_toBottomOf="@id/textViewMaxSeats"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

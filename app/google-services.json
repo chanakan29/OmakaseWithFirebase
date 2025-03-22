@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840572707129",
+    "project_id": "omakase-se-and-mobile",
+    "storage_bucket": "omakase-se-and-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840572707129:android:2f3f06a154a8623e4f88e8",
+        "android_client_info": {
+          "package_name": "com.example.newomakase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumfbyQhPqhSnZE_l47ZiD0P_jJa6PWRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

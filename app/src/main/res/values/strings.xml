@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NewOmakase</string>
+    <string name="restaurant_phone">เบอร์โทรศัพท์: %s</string>
+    <string name="price_format">ราคา: ฿%d</string>
+    <string name="max_seats_format">ที่นั่งสูงสุด: %d</string>
+    <string name="available_times_format">รอบเวลา: %s</string>
+</resources>
