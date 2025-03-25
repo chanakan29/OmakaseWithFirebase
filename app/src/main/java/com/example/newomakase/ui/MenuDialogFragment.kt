@@ -9,9 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newomakase.MenuAdapter // เราจะสร้าง Adapter นี้ในภายหลัง
 import com.example.newomakase.databinding.FragmentMenuDialogBinding
-import androidx.navigation.fragment.findNavController
 import com.example.newomakase.R
-import com.example.newomakase.findSafeNavController
 
 class MenuDialogFragment : DialogFragment() {
 
@@ -91,7 +89,6 @@ class MenuDialogFragment : DialogFragment() {
                                 putString("id", id)
                                 putInt("seats", seats)
                             }
-
                             // ใช้ NavController ของ Activity เพื่อเรียก Global Action
                             activity?.findNavController(R.id.nav_host_fragment)?.navigate(R.id.globalActionMenuToBooking, bundle)
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home" android:title="หน้าแรก" />
+
+    <item
+        android:id="@+id/bookingListFragment"
+        android:icon="@drawable/ic_bookings" android:title="รายการจอง" />
+
+    <item
+        android:id="@+id/navigationFragment"
+        android:icon="@drawable/ic_navigation" android:title="นำทาง" />
+
+    <item
+        android:id="@+id/notificationsFragment"
+        android:icon="@drawable/ic_notifications" android:title="การแจ้งเตือน" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile" android:title="สมาชิก" />
+
+</menu>
