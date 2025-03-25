@@ -7,13 +7,46 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.newomakase.ui.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_courseListFragment"
             app:destination="@id/courseListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/courseListFragment"
         android:name="com.example.newomakase.ui.CourseListFragment"
-        android:label="CourseListFragment" />
+        android:label="CourseListFragment">
+        <action
+            android:id="@+id/action_courseListFragment_to_menuDialogFragment"
+            app:destination="@id/menuDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/menuDialogFragment"
+        android:name="com.example.newomakase.ui.MenuDialogFragment"
+        android:label="MenuDialogFragment" >
+        <action
+            android:id="@+id/actionMenuToBooking"
+            app:destination="@id/bookingFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.newomakase.ui.BookingFragment"
+        android:label="BookingFragment" >
+        <action
+            android:id="@+id/actionBookingToUserDetails"
+            app:destination="@id/userDetailsFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/globalActionMenuToBooking"
+        app:destination="@id/bookingFragment" />
+
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.example.newomakase.ui.UserDetailsFragment"
+        android:label="UserDetailsFragment" />
+
 </navigation>

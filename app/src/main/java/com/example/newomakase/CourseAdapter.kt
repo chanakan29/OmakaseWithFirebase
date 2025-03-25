@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newomakase.ui.CourseListFragment
+import com.example.newomakase.ui.MenuDialogFragment
 
 class CourseAdapter(
     private val coursesList: List<CourseListFragment.Course>,
@@ -24,14 +25,16 @@ class CourseAdapter(
             textViewCourseName.text = course.name
             textViewCoursePrice.text = itemView.context.getString(R.string.price_format, course.price)
             textViewMaxSeats.text = itemView.context.getString(R.string.max_seats_format, course.maxSeats)
-            textViewAvailableTimes.text = itemView.context.getString(R.string.available_times_format, course.availableTimes.joinToString("\n"))
+            val formattedTimes = course.availableTimes.joinToString("\n") { "- $it" }
+            textViewAvailableTimes.text = itemView.context.getString(R.string.available_times_format, "\n$formattedTimes")
+
 
             // กำหนดรูปภาพตามชื่อคอร์ส
             when (course.name) {
-                "ธรรมดา" -> {
+                "คอร์สธรรมดา" -> {
                     imageViewCourse.setImageResource(R.drawable.ic_course_regular) // เปลี่ยนเป็นชื่อ Resource ของคุณ
                 }
-                "พรีเมี่ยม" -> {
+                "คอร์สพรีเมี่ยม" -> {
                     imageViewCourse.setImageResource(R.drawable.ic_course_premium) // เปลี่ยนเป็นชื่อ Resource ของคุณ
                 }
                 else -> {
@@ -40,7 +43,14 @@ class CourseAdapter(
             }
 
             itemView.setOnClickListener {
-                onItemClick(course)
+                // สร้าง Instance ของ MenuDialogFragment พร้อมส่งข้อมูล
+                val menuDialogFragment = MenuDialogFragment.newInstance(course.name, course.menu, course.id, course.maxSeats)
+
+                // แสดง DialogFragment
+                val fragmentManager = (itemView.context as? androidx.fragment.app.FragmentActivity)?.supportFragmentManager
+                fragmentManager?.let {
+                    menuDialogFragment.show(it, "MenuDialog")
+                }
             }
         }
     }

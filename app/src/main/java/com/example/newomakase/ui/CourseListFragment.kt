@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newomakase.CourseAdapter
 import com.example.newomakase.R
 import com.google.firebase.firestore.FirebaseFirestore
+import androidx.navigation.fragment.findNavController
 
 class CourseListFragment : Fragment() {
 
@@ -80,7 +81,12 @@ class CourseListFragment : Fragment() {
     }
 
     private fun showCourseMenuPopup(course: Course) {
-        // TODO: Implement the logic to show the menu popup (DialogFragment or BottomSheetDialogFragment)
-        // You will likely create and show a DialogFragment here, passing the course.menu
+        val bundle = Bundle()
+        bundle.putString("name", course.name)
+        bundle.putStringArrayList("menu", ArrayList(course.menu))
+        bundle.putString("id", course.id)
+        bundle.putInt("seats", course.maxSeats)
+
+        findNavController().navigate(R.id.action_courseListFragment_to_menuDialogFragment, bundle)
     }
 }

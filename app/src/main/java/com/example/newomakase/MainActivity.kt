@@ -39,15 +39,21 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val document = task.result
                         if (!document.exists()) {
-                            // สร้าง Document ใหม่
-                            val timeSlotsMap = hashMapOf(
-                                "12:00-13:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                "14:00-15:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                "16:00-17:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                "18:00-19:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                "10:00-12:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                "15:00-17:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
-                            )
+                            // สร้าง Document ใหม่พร้อมรอบเวลาที่ถูกต้องตามประเภทคอร์ส
+                            val timeSlotsMap = when (courseId) {
+                                "premium" -> hashMapOf(
+                                    "10:00-12:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                    "15:00-17:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
+                                )
+                                "regular" -> hashMapOf(
+                                    "12:00-13:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                    "14:00-15:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                    "16:00-17:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                    "18:00-19:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
+                                )
+                                else -> hashMapOf() // กรณีมี courseId อื่นๆ เพิ่มเติม
+                            }
+
                             val availabilityData = hashMapOf(
                                 "date" to formattedDate,
                                 "courseId" to courseId,
