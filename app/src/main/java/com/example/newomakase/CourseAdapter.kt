@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newomakase.ui.CourseListFragment
+import com.example.newomakase.ui.MenuDialogFragment
 
 class CourseAdapter(
-    private val coursesList: List<CourseListFragment.Course>,
     private val onItemClick: (CourseListFragment.Course) -> Unit
-) : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
+) : ListAdapter<CourseListFragment.Course, CourseAdapter.CourseViewHolder>(CourseDiffCallback()) { // เปลี่ยนจาก RecyclerView.Adapter เป็น ListAdapter
 
     class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageViewCourse: ImageView = itemView.findViewById(R.id.imageViewCourse)
@@ -24,14 +25,16 @@ class CourseAdapter(
             textViewCourseName.text = course.name
             textViewCoursePrice.text = itemView.context.getString(R.string.price_format, course.price)
             textViewMaxSeats.text = itemView.context.getString(R.string.max_seats_format, course.maxSeats)
-            textViewAvailableTimes.text = itemView.context.getString(R.string.available_times_format, course.availableTimes.joinToString("\n"))
+            val formattedTimes = course.availableTimes.joinToString("\n") { "- $it" }
+            textViewAvailableTimes.text = itemView.context.getString(R.string.available_times_format, "\n$formattedTimes")
+
 
             // กำหนดรูปภาพตามชื่อคอร์ส
             when (course.name) {
-                "ธรรมดา" -> {
+                "คอร์สธรรมดา" -> {
                     imageViewCourse.setImageResource(R.drawable.ic_course_regular) // เปลี่ยนเป็นชื่อ Resource ของคุณ
                 }
-                "พรีเมี่ยม" -> {
+                "คอร์สพรีเมี่ยม" -> {
                     imageViewCourse.setImageResource(R.drawable.ic_course_premium) // เปลี่ยนเป็นชื่อ Resource ของคุณ
                 }
                 else -> {
@@ -40,7 +43,11 @@ class CourseAdapter(
             }
 
             itemView.setOnClickListener {
-                onItemClick(course)
+                val menuDialogFragment = MenuDialogFragment.newInstance(course.name, course.menu, course.id, course.maxSeats)
+                val fragmentManager = (itemView.context as? androidx.fragment.app.FragmentActivity)?.supportFragmentManager
+                fragmentManager?.let {
+                    menuDialogFragment.show(it, "MenuDialog")
+                }
             }
         }
     }
@@ -52,9 +59,9 @@ class CourseAdapter(
     }
 
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
-        val currentCourse = coursesList[position]
+        val currentCourse = getItem(position) // ใช้ getItem() จาก ListAdapter
         holder.bind(currentCourse, onItemClick)
     }
 
-    override fun getItemCount() = coursesList.size
+    // ไม่จำเป็นต้องมี getItemCount() แล้ว ListAdapter จัดการให้
 }

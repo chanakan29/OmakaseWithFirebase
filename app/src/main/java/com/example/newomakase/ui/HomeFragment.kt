@@ -10,7 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.newomakase.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
@@ -19,7 +21,6 @@ class HomeFragment : Fragment() {
     private lateinit var textViewRestaurantName: TextView
     private lateinit var textViewRestaurantPhone: TextView
     private lateinit var buttonViewCourses: Button
-    private lateinit var buttonViewReservations: Button
 
     private val firestore = FirebaseFirestore.getInstance()
 
@@ -39,7 +40,6 @@ class HomeFragment : Fragment() {
         textViewRestaurantName = view.findViewById(R.id.textViewRestaurantName)
         textViewRestaurantPhone = view.findViewById(R.id.textViewRestaurantPhone)
         buttonViewCourses = view.findViewById(R.id.buttonViewCourses)
-        buttonViewReservations = view.findViewById(R.id.buttonViewReservations)
 
         // Set an image for the restaurant
         imageViewRestaurant.setImageResource(R.drawable.restaurant_image) // Replace with your actual image resource
@@ -54,14 +54,6 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_homeFragment_to_courseListFragment)
             Toast.makeText(context, "ไปหน้าเลือกคอร์ส", Toast.LENGTH_SHORT).show()
         }
-
-        buttonViewReservations.setOnClickListener {
-            // TODO: Navigate to the view reservations screen
-            Toast.makeText(context, "ไปหน้าดูรายการจอง", Toast.LENGTH_SHORT).show()
-        }
-
-        // OnClickListener for the phone number TextView is no longer needed
-        // because we are using android:autoLink="phone" in the XML layout.
     }
 
     private fun fetchRestaurantInfo() {

@@ -4,4 +4,12 @@
     <string name="price_format">ราคา: ฿%d</string>
     <string name="max_seats_format">ที่นั่งสูงสุด: %d</string>
     <string name="available_times_format">รอบเวลา: %s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selected_course">คอร์สที่เลือก: %s</string>
+    <string name="booking_datetime">วันที่และเวลา: %s, %s</string>
+    <string name="number_of_people">จำนวน: %d ท่าน</string>
+    <string name="num_of_people">%d ท่าน</string>
+    <string name="booking_dateandtime">%1$s เวลา %2$s น.</string>
+    <string name="booking_datetime_error">มีข้อผิดพลาดในวันที่ที่เลือก: %1$s</string>
 </resources>
