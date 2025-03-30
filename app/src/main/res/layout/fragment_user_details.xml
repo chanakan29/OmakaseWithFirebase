@@ -16,23 +16,75 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="กรอกข้อมูลการจอง"
+            android:textStyle="bold"
+            android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:layout_marginBottom="16dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:id="@+id/textViewSelectedCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            tools:text="คอร์สที่เลือก: คอร์สพรีเมี่ยม" />
+
+        <TextView
+            android:id="@+id/textViewBookingDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            tools:text="วันที่และเวลา: 28 มีนาคม 2025, 15:00 - 17:00" />
+
+        <TextView
+            android:id="@+id/textViewNumberOfPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textSize="18sp"
+            tools:text="จำนวน: 1 ท่าน" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ชื่อ-นามสกุล"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextName"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:layout_weight="1"
+                android:hint="ชื่อ"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginEnd="8dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="นามสกุล"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginStart="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -67,7 +119,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ข้อความเพิ่มเติม (ถ้ามี)"
+            android:hint="ข้อมูลเพิ่มเติม เช่น แพ้อาหาร, ข้อจำกัดอาหาร, โอกาสพิเศษ "
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginBottom="24dp">
 
@@ -77,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="top|start"
                 android:inputType="textMultiLine"
-                android:minHeight="80dp" />
+                android:minHeight="150dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +138,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ชำระเงิน"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1565C0"
+            android:layout_marginTop="16dp"
+            app:cornerRadius="8dp"
             android:textSize="16sp"
             android:padding="12dp"/>
 

@@ -67,6 +67,30 @@
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.example.newomakase.ui.UserDetailsFragment"
-        android:label="UserDetailsFragment" />
+        android:label="UserDetailsFragment" >
+        <action
+            android:id="@+id/action_userDetailsFragment_to_paymentDialogFragment"
+            app:destination="@id/paymentDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/paymentDialogFragment"
+        android:name="com.example.newomakase.ui.PaymentDialogFragment"
+        android:label="PaymentDialogFragment" >
+        <action
+            android:id="@+id/action_paymentDialogFragment_to_bookingSuccessFragment"
+            app:destination="@id/bookingSuccessFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/bookingSuccessFragment"
+        android:name="com.example.newomakase.ui.BookingSuccessFragment"
+        android:label="BookingSuccessFragment" >
+        <action
+            android:id="@+id/action_bookingSuccessFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

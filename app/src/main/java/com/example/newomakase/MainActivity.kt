@@ -64,41 +64,34 @@ class MainActivity : AppCompatActivity() {
                 val documentId = "${formattedDate}_${courseId}"
                 val availabilityRef = firestore.collection("availability").document(documentId)
 
-                availabilityRef.get().addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val document = task.result
-                        if (!document.exists()) {
-                            // สร้าง Document ใหม่พร้อมรอบเวลาที่ถูกต้องตามประเภทคอร์ส
-                            val timeSlotsMap = when (courseId) {
-                                "premium" -> hashMapOf(
-                                    "10:00-12:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                    "15:00-17:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
-                                )
-                                "regular" -> hashMapOf(
-                                    "12:00-13:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                    "14:00-15:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                    "16:00-17:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
-                                    "18:00-19:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
-                                )
-                                else -> hashMapOf() // กรณีมี courseId อื่นๆ เพิ่มเติม
-                            }
-
-                            val availabilityData = hashMapOf(
-                                "date" to formattedDate,
-                                "courseId" to courseId,
-                                "timeSlots" to timeSlotsMap
+                firestore.runTransaction { transaction ->
+                    val document = transaction.get(availabilityRef)
+                    if (!document.exists()) {
+                        val timeSlotsMap = when (courseId) {
+                            "premium" -> hashMapOf(
+                                "10:00-12:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                "15:00-17:00" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
                             )
-                            availabilityRef.set(availabilityData)
-                                .addOnSuccessListener {
-                                    Log.d(TAG, "Availability created for $documentId")
-                                }
-                                .addOnFailureListener { e ->
-                                    Log.w(TAG, "Error creating availability for $documentId", e)
-                                }
+                            "regular" -> hashMapOf(
+                                "12:00-13:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                "14:00-15:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                "16:00-17:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8),
+                                "18:00-19:30" to hashMapOf("bookedCount" to 0, "totalCapacity" to 8)
+                            )
+                            else -> hashMapOf()
                         }
-                    } else {
-                        Log.d(TAG, "Error getting availability for $documentId", task.exception)
+
+                        val availabilityData = hashMapOf(
+                            "date" to formattedDate,
+                            "courseId" to courseId,
+                            "timeSlots" to timeSlotsMap
+                        )
+
+                        transaction.set(availabilityRef, availabilityData)
+                        Log.d(TAG, "Availability created for $documentId")
                     }
+                }.addOnFailureListener { e ->
+                    Log.w(TAG, "Error creating availability for $documentId", e)
                 }
             }
         }
