@@ -30,11 +30,12 @@ class PaymentDialogFragment : BottomSheetDialogFragment() {
     private var customerPhone: String = ""
     private var customerEmail: String = ""
     private var customerNotes: String = ""
+    private var depositAmount: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            fullPrice = it.getDouble("fullPrice")
+            val pricePerPerson = it.getDouble("fullPrice")
             courseName = it.getString("courseName") ?: ""
             bookingDateTime = it.getString("bookingDateTime") ?: ""
             numberOfPeople = it.getInt("numberOfPeople")
@@ -42,6 +43,10 @@ class PaymentDialogFragment : BottomSheetDialogFragment() {
             customerPhone = it.getString("customerPhone") ?: ""
             customerEmail = it.getString("customerEmail") ?: ""
             customerNotes = it.getString("customerNotes") ?: ""
+
+            fullPrice = pricePerPerson * numberOfPeople
+            val depositPercentage = 0.5
+            depositAmount = fullPrice * depositPercentage
         }
     }
 
@@ -56,9 +61,6 @@ class PaymentDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val depositPercentage = 0.5
-        val depositAmount = fullPrice * depositPercentage
 
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale("th", "TH"))
 
