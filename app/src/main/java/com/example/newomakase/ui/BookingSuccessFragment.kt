@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.newomakase.R
 import com.example.newomakase.databinding.FragmentBookingSuccessBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class BookingSuccessFragment : Fragment() {
 
     private var _binding: FragmentBookingSuccessBinding? = null
     private val binding get() = _binding!!
+
+    private val firestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +39,31 @@ class BookingSuccessFragment : Fragment() {
             binding.textViewCourseName.text = courseName
             binding.textViewDateTime.text = getString(R.string.booking_dateandtime, bookingDate, bookingTime)
             binding.textViewNumberOfPeople.text = getString(R.string.num_of_people, numberOfPeople)
-            binding.textViewRestaurantName.text = "ร้านโอมากาเสะของคุณ" // Replace with your actual restaurant name
+
+            // ดึงชื่อร้านจาก Firestore
+            fetchRestaurantName()
         }
 
         binding.buttonGoHome.setOnClickListener {
             findNavController().navigate(R.id.action_bookingSuccessFragment_to_homeFragment)
         }
+    }
+
+    private fun fetchRestaurantName() {
+        firestore.collection("restaurant_info")
+            .document("main_restaurant")
+            .get()
+            .addOnSuccessListener { document ->
+                if (isAdded && document.exists()) {
+                    val restaurantName = document.getString("name") ?: getString(R.string.restaurant_name_default)
+                    binding.textViewRestaurantName.text = restaurantName
+                } else {
+                    binding.textViewRestaurantName.text = getString(R.string.restaurant_name_default)
+                }
+            }
+            .addOnFailureListener {
+                binding.textViewRestaurantName.text = getString(R.string.restaurant_name_default)
+            }
     }
 
     override fun onDestroyView() {

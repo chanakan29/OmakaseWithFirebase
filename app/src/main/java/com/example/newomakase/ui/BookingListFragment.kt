@@ -11,6 +11,7 @@ import com.example.newomakase.BookingAdapter
 import com.example.newomakase.data.Booking
 import com.example.newomakase.databinding.FragmentBookingListBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query // Import Query
 
 class BookingListFragment : Fragment() {
 
@@ -41,7 +42,7 @@ class BookingListFragment : Fragment() {
 
     private fun fetchBookingData() {
         firestore.collection("reservations")
-            .orderBy("timestamp") // เรียงตามเวลาที่จอง (ล่าสุดขึ้นก่อน)
+            .orderBy("timestamp", Query.Direction.DESCENDING) // เปลี่ยนตรงนี้เป็น DESCENDING
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val bookingList = mutableListOf<Booking>()
