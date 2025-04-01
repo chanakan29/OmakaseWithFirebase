@@ -128,7 +128,7 @@ class BookingFragment : Fragment() {
         binding.textViewCourseName.text = courseName ?: "ชื่อคอร์ส"
 
         val calendarMin = Calendar.getInstance()
-        calendarMin.add(Calendar.DAY_OF_YEAR, 3)
+        calendarMin.add(Calendar.DAY_OF_YEAR, 2)
         binding.datePicker.minDate = calendarMin.timeInMillis
 
         val calendarMax = Calendar.getInstance()

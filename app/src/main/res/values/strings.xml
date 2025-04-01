@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NewOmakase</string>
-    <string name="restaurant_phone">เบอร์โทรศัพท์: %s</string>
-    <string name="price_format">ราคา: ฿%d</string>
+    <string name="restaurant_phone">ติดต่อ: %s</string>
+    <string name="price_format">ราคา: ฿%d ต่อ 1 ท่าน</string>
     <string name="max_seats_format">ที่นั่งสูงสุด: %d</string>
     <string name="available_times_format">รอบเวลา: %s</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -12,4 +12,14 @@
     <string name="num_of_people">%d ท่าน</string>
     <string name="booking_dateandtime">%1$s เวลา %2$s น.</string>
     <string name="booking_datetime_error">มีข้อผิดพลาดในวันที่ที่เลือก: %1$s</string>
+
+    <string name="booking_date_time">วันที่: %1$s เวลา: %2$s</string>
+    <string name="booking_people">จำนวน: %1$d ท่าน</string>
+    <string name="booking_status">สถานะ: %1$s</string>
+    <string name="customer_name_short">ชื่อ: %1$s</string>
+    <string name="customer_phone_short">เบอร์โทรศัพท์: %1$s</string>
+    <string name="customer_email_short">อีเมล: %1$s</string>
+    <string name="booking_full_price">ราคาเต็ม: %s</string>
+    <string name="booking_deposit_amount">ค่ามัดจำ: %s</string>
+    <string name="restaurant_name_default">ร้านโอมากาเสะของคุณ</string>
 </resources>

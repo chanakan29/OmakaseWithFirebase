@@ -22,7 +22,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewProfile.text = "หน้าสมาชิก"
         // TODO: Implement logic for user profile/membership
     }
 

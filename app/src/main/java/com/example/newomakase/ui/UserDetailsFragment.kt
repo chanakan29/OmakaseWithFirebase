@@ -80,7 +80,7 @@ class UserDetailsFragment : Fragment() {
                         val phone = editTextPhone.text.toString()
                         val email = editTextEmail.text.toString()
                         val customerName = "$firstName $lastName"
-                        val customerNotes = editTextNotes.text.toString() // **ดึงข้อมูลจาก editTextNotes**
+                        val customerNotes = editTextNotes.text.toString()
 
                         firestore.collection("courses")
                             .document(courseId)
@@ -97,7 +97,7 @@ class UserDetailsFragment : Fragment() {
                                         putString("customerName", customerName)
                                         putString("customerPhone", phone)
                                         putString("customerEmail", email)
-                                        putString("customerNotes", customerNotes) // **เพิ่ม customerNotes ใน Bundle**
+                                        putString("customerNotes", customerNotes)
                                     }
 
                                     findNavController().navigate(R.id.action_userDetailsFragment_to_paymentDialogFragment, bundle)
